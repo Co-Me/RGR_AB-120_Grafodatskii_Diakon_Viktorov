@@ -141,8 +141,10 @@
   <ItemGroup>
     <ClCompile Include="RGRMain.cpp" />
     <ClCompile Include="playfair.cpp" />
+    <ClCompile Include="gronsfeld.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="gronsfeld.h" />
     <ClInclude Include="playfair.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -21,9 +21,15 @@
     <ClCompile Include="playfair.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="gronsfeld.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="playfair.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gronsfeld.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

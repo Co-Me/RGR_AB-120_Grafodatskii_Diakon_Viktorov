@@ -1,3 +1,12 @@
+/*
+Шифр Плейфера использует таблицу для шифровки. В таблицу 5х5 в любом порядке записываются все уникальные буквы кодовой фразы, в данном случае, заполняются поочередно строки.
+В оставшиеся ячейки записываются по порядку остальные буквы алфавита (I и J считаются за I). Исходный текст разбивается на биграммы,
+если две буквы в биграмме одинаковые, то между ними записывается X или Q. Далее преобразование происходит по правилам:
+1. Буквы в одной строке - заменить на буквы, стоящие справа.
+2. Буквы в одном столбце - заменить на буквы, стоящие снизу.
+3. Буквы не в столбце и не в строке - заменить на буквы, стоящие в этих же строках, но на других углах прямоугольника.
+Таблица циклична, при дешифровке правила инвертируются.
+*/
 #include <iostream>
 #include <vector>
 #include <string>
@@ -5,9 +14,12 @@
 
 using namespace std;
 
-vector<vector<char>> sheetGenerator(string codePhrase) { // Генерация таблицы для шифрования
-	vector<vector<char>> sheet = { vector<char>() };
-	vector<char> phrase = textParse(codePhrase);
+#define ENCODE 1
+#define DECODE 2
+
+vector<string> sheetGenerator(string codePhrase) { // Генерация таблицы для шифрования
+	vector<string> sheet = {""};
+	string phrase = textParse(codePhrase);
 	int rowIndex = 0;
 	bool alphabet[26] = { false };
 	alphabet['J' - 'A'] = true; // Буквы I и J считать за I для уменьшения алфавита
@@ -19,7 +31,7 @@ vector<vector<char>> sheetGenerator(string codePhrase) { // Генерация таблицы дл
 		}
 
 		if (sheet[rowIndex].size() == 5) {
-			sheet.push_back(vector<char>());
+			sheet.push_back("");
 			rowIndex++;
 		}
 	}
@@ -30,7 +42,7 @@ vector<vector<char>> sheetGenerator(string codePhrase) { // Генерация таблицы дл
 			alphabet[i] = true;
 		}
 		if (sheet[rowIndex].size() == 5) {
-			sheet.push_back(vector<char>());
+			sheet.push_back("");
 			rowIndex++;
 		}
 	}
@@ -45,7 +57,7 @@ vector<vector<char>> sheetGenerator(string codePhrase) { // Генерация таблицы дл
 }
 
 
-vector<pair<char, char>> bigramsGenerator(vector<char> textToEncode) { // Генератор вектора биграмм
+vector<pair<char, char>> bigramsGenerator(string textToEncode) { // Генератор вектора биграмм
 	vector<pair<char, char>> bigrams;
 	size_t n = textToEncode.size();
 
@@ -84,8 +96,8 @@ vector<pair<char, char>> bigramsGenerator(vector<char> textToEncode) { // Генера
 }
 
 
-vector<char> textParse(string text) { // Обработка исходного текста, удаление лишних символов, замена J на I, перевод в верхний регистр
-	vector<char> parsedText;
+string textParse(string text) { // Обработка исходного текста, удаление лишних символов, замена J на I, перевод в верхний регистр
+	string parsedText;
 
 	for (char i : text) {
 
@@ -104,7 +116,7 @@ vector<char> textParse(string text) { // Обработка исходного текста, удаление ли
 	return parsedText;
 }
 
-pair<pair<int, int>, pair<int, int>> findPositions(pair<char, char> bigram, vector<vector<char>> sheet) { // Нахождение позиций символов биграммы в таблице
+pair<pair<int, int>, pair<int, int>> findPositions(pair<char, char> bigram, vector<string> sheet) { // Нахождение позиций символов биграммы в таблице
 	pair<pair<int, int>, pair<int, int>> positions;
 
 	for (int i = 0; i < 5; i++) {
@@ -142,16 +154,16 @@ int chooseRule(pair<pair<int, int>, pair<int, int>> positions) { // Выбор правил
 	return rule;
 }
 
-pair<char, char> bigramTransform(pair<char, char> bigram, vector<vector<char>> sheet, pair<pair<int, int>, pair<int, int>> positions, int option) { // Преобразование символов биграммы
+pair<char, char> bigramTransform(pair<char, char> bigram, vector<string> sheet, pair<pair<int, int>, pair<int, int>> positions, int option) { // Преобразование символов биграммы
 	int rule = chooseRule(positions);
 	int row1 = positions.first.first, col1 = positions.first.second;
 	int row2 = positions.second.first, col2 = positions.second.second;
 	int move = 0;
 
-	if (option == 1) {
+	if (option == ENCODE) {
 		move = 1;
 	}
-	else if (option == 2) {
+	else if (option == DECODE) {
 		move = 4;
 	}
 
@@ -171,31 +183,17 @@ pair<char, char> bigramTransform(pair<char, char> bigram, vector<vector<char>> s
 	return bigram;
 }
 
-int inputOption() {
-	string option = "0";
 
-	while (option != "1" && option != "2") {
-		cout << "1) Encode" << endl << "2) Decode" << endl;
-		cin >> option;
-	}
-
-	return int(option[0] - '0');
-}
-
-//_____________________________________________________________________________________________________________________________________________________________________________________________________
-// Что есть: генерация таблицы, удаление из текста лишних символов, генерация биграмм, перевод букв в верхний регистр, шифровка, дешифровка
-// Что нужно: адекватный ввод/вывод
-
-void playfair() {
-	vector<vector<char>> sheet; // Таблица для кодировки
+void playfair(int option) {
+	vector<string> sheet; // Таблица для кодировки
 	vector<pair<char, char>> bigrams, encodedBigrams; // Векторы с биграммами 
-	vector<char> textToEncode; // Обработанный текст
+	string textToEncode; // Обработанный текст
 	string codePhrase = "NSTUNETI"; // Кодовое слово
 	string text;
-	int option = inputOption();
 
 	cout << "Text: ";
-	cin >> text;
+	getline(cin, text);
+	getline(cin, text);
 
 	sheet = sheetGenerator(codePhrase);
 	textToEncode = textParse(text);
