@@ -1,20 +1,53 @@
+#include <iostream>;
+#include "inpout.h"
 #include "playfair.h"
 #include "gronsfeld.h"
 
 using namespace std;
+using namespace N;
 
-int inputOption() {
-	string option = "0";
+void writeMenu() {
+	cout << "0) Exit" << endl;
+	cout << "1) Gronsfeld cipher" << endl;
+	cout << "2) Playfair cipher" << endl;
+}
 
-	while (option != "1" && option != "2") {
-		cout << "1) Encode" << endl << "2) Decode" << endl;
-		cin >> option;
+void menu() {
+	Inpout io;
+	Grons gf;
+	Playf pf;
+	io.clear();
+
+	int choice;
+
+	while (true) {
+		writeMenu();
+		cin >> choice;
+		int option;
+		string plaintext;
+		string key = "";
+		switch (choice) {
+			case 0:
+				cout << "Good Bye!";
+				return;
+			case 1:
+				option = io.readOption();
+				plaintext = io.readInput();
+				key = io.readKey();
+				gf.gronsfeldCipher(option, plaintext, key);
+				break;
+			case 2:
+				option = io.readOption();
+				plaintext = io.readInput();
+				key = io.readKey();
+				pf.playfairCipher(option, plaintext, key);
+				break;
+			default:
+				break;
+		}
 	}
-
-	return int(option[0] - '0');
 }
 
 int main() {
-	int option = inputOption();
-	playfair(option);
+	menu();
 }

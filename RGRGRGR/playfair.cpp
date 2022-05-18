@@ -11,13 +11,15 @@
 #include <vector>
 #include <string>
 #include "playfair.h"
+#include "inpout.h"
 
 using namespace std;
+using namespace N;
 
 #define ENCODE 1
 #define DECODE 2
 
-vector<string> sheetGenerator(string codePhrase) { // Генерация таблицы для шифрования
+vector<string> Playf::sheetGenerator(string codePhrase) { // Генерация таблицы для шифрования
 	vector<string> sheet = {""};
 	string phrase = textParse(codePhrase);
 	int rowIndex = 0;
@@ -47,17 +49,12 @@ vector<string> sheetGenerator(string codePhrase) { // Генерация таблицы для шифр
 		}
 	}
 
-	for (int i = 0; i < 25; i++) {
-		cout << sheet[i / 5][i % 5] << ' ';
-		if ((i + 1) % 5 == 0) cout << endl;
-	}
-
 	return sheet;
 
 }
 
 
-vector<pair<char, char>> bigramsGenerator(string textToEncode) { // Генератор вектора биграмм
+vector<pair<char, char>> Playf::bigramsGenerator(string textToEncode) { // Генератор вектора биграмм
 	vector<pair<char, char>> bigrams;
 	size_t n = textToEncode.size();
 
@@ -96,7 +93,7 @@ vector<pair<char, char>> bigramsGenerator(string textToEncode) { // Генератор ве
 }
 
 
-string textParse(string text) { // Обработка исходного текста, удаление лишних символов, замена J на I, перевод в верхний регистр
+string Playf::textParse(string text) { // Обработка исходного текста, удаление лишних символов, замена J на I, перевод в верхний регистр
 	string parsedText;
 
 	for (char i : text) {
@@ -116,7 +113,7 @@ string textParse(string text) { // Обработка исходного текста, удаление лишних с
 	return parsedText;
 }
 
-pair<pair<int, int>, pair<int, int>> findPositions(pair<char, char> bigram, vector<string> sheet) { // Нахождение позиций символов биграммы в таблице
+pair<pair<int, int>, pair<int, int>> Playf::findPositions(pair<char, char> bigram, vector<string> sheet) { // Нахождение позиций символов биграммы в таблице
 	pair<pair<int, int>, pair<int, int>> positions;
 
 	for (int i = 0; i < 5; i++) {
@@ -136,7 +133,7 @@ pair<pair<int, int>, pair<int, int>> findPositions(pair<char, char> bigram, vect
 	return positions;
 }
 
-int chooseRule(pair<pair<int, int>, pair<int, int>> positions) { // Выбор правила преобразования на основе позиций символов биграммы
+int Playf::chooseRule(pair<pair<int, int>, pair<int, int>> positions) { // Выбор правила преобразования на основе позиций символов биграммы
 	int row1 = positions.first.first, col1 = positions.first.second;
 	int row2 = positions.second.first, col2 = positions.second.second;
 	int rule = 0;
@@ -154,8 +151,8 @@ int chooseRule(pair<pair<int, int>, pair<int, int>> positions) { // Выбор правил
 	return rule;
 }
 
-pair<char, char> bigramTransform(pair<char, char> bigram, vector<string> sheet, pair<pair<int, int>, pair<int, int>> positions, int option) { // Преобразование символов биграммы
-	int rule = chooseRule(positions);
+pair<char, char> Playf::bigramTransform(pair<char, char> bigram, vector<string> sheet, pair<pair<int, int>, pair<int, int>> positions, int option) { // Преобразование символов биграммы
+	int rule = Playf::chooseRule(positions);
 	int row1 = positions.first.first, col1 = positions.first.second;
 	int row2 = positions.second.first, col2 = positions.second.second;
 	int move = 0;
@@ -184,19 +181,16 @@ pair<char, char> bigramTransform(pair<char, char> bigram, vector<string> sheet, 
 }
 
 
-void playfair(int option) {
+void Playf::playfairCipher(int option, string plaintext, string key) {
+	Inpout io;
+
 	vector<string> sheet; // Таблица для кодировки
 	vector<pair<char, char>> bigrams, encodedBigrams; // Векторы с биграммами 
 	string textToEncode; // Обработанный текст
-	string codePhrase = "NSTUNETI"; // Кодовое слово
-	string text;
+	string ciphertext = "";
 
-	cout << "Text: ";
-	getline(cin, text);
-	getline(cin, text);
-
-	sheet = sheetGenerator(codePhrase);
-	textToEncode = textParse(text);
+	sheet = sheetGenerator(key);
+	textToEncode = textParse(plaintext);
 	bigrams = bigramsGenerator(textToEncode);
 
 
@@ -205,7 +199,11 @@ void playfair(int option) {
 	}
 
 	for (pair<char, char> i : encodedBigrams) {
-		cout << i.first << i.second;
+		ciphertext.push_back(i.first);
+		ciphertext.push_back(i.second);
+
 	}
+
+	io.writeOutput(plaintext, ciphertext, "Playfair cipher");
 
 }

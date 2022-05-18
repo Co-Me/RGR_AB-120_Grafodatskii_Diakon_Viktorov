@@ -7,13 +7,15 @@
 #include <vector>
 #include <string>
 #include "gronsfeld.h"
+#include "inpout.h"
 
 using namespace std;
+using namespace N;
 
 #define ENCODE 1
 #define DECODE 2
 
-bool isLetter(char letter) {
+bool Grons::isLetter(char letter) {
 	if ((letter >= 'a' && letter <= 'z') || (letter >= 'A' && letter <= 'Z')) {
 		return true;
 	}
@@ -23,8 +25,8 @@ bool isLetter(char letter) {
 	}
 }
 
-char letterTransform(char letter, int move, int option) {
-	if (!isLetter(letter)) {
+char Grons::letterTransform(char letter, int move, int option) {
+	if (!Grons::isLetter(letter)) {
 		return letter;
 	}
 
@@ -44,26 +46,20 @@ char letterTransform(char letter, int move, int option) {
 	}
 }
 
-void gronsfeld(int option) {
-	string key = "";
-	string inText = "";
-	string outText = "";
+void Grons::gronsfeldCipher(int option, string plaintext, string key) {
+	Inpout io;
+
+	string ciphertext = "";
 	size_t keyIndex = 0;
 
-	cout << "Text: ";
-	getline(cin, inText);
-	getline(cin, inText);
-
-	cout << "Key: ";
-	cin >> key;
-
-	for (size_t i = 0; i < inText.size(); ++i) {
-		outText.push_back(letterTransform(inText[i], key[keyIndex % key.size()] - '0', option));
-		if (outText.back() == inText[i]) {
+	for (size_t i = 0; i < plaintext.size(); ++i) {
+		ciphertext.push_back(Grons::letterTransform(plaintext[i], key[keyIndex % key.size()] - '0', option));
+		if (ciphertext.back() == plaintext[i]) {
 			--keyIndex;
 		}
 		++keyIndex;
 	}
 
-	cout << outText;
+	io.writeOutput(plaintext, ciphertext, "Gronsfeld cipher");
+
 }

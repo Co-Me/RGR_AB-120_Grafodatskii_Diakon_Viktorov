@@ -139,13 +139,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="inpout.cpp" />
     <ClCompile Include="RGRMain.cpp" />
     <ClCompile Include="playfair.cpp" />
     <ClCompile Include="gronsfeld.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gronsfeld.h" />
+    <ClInclude Include="inpout.h" />
     <ClInclude Include="playfair.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="input.txt" />
+    <Text Include="output.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

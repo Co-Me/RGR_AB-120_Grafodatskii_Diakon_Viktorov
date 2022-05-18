@@ -1,10 +1,16 @@
 #pragma once
-
-#include <iostream>
-#include <vector>
+#include <string>
 
 using namespace std;
+namespace N
+{
+    class Grons
+    {
 
-bool isLetter(char);
-char letterTransform(char, int, int);
-void gronsfeld(int);
+    public:
+        bool isLetter(char);
+        char letterTransform(char, int, int);
+        void gronsfeldCipher(int, string, string);
+    };
+
+}
