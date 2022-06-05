@@ -15,8 +15,57 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="RGRGRGR.cpp">
+    <ClCompile Include="RGRMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="playfair.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gronsfeld.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="inpout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cezar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="viginer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="atbash.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="skital.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="playfair.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gronsfeld.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inpout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cezar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="viginer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="atbash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="skital.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="output.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
