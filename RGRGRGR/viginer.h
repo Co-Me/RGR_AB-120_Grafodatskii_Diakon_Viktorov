@@ -10,6 +10,7 @@ namespace N
     public:
         string viginer(string, string);
         string deviginer(string, string);
+        string phraseGen(string, string);
     };
 
 }

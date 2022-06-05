@@ -203,6 +203,11 @@ string Playf::playfairCipher(int option, string plaintext, string key) {
 		ciphertext.push_back(i.second);
 
 	}
+	int i = 0;
+	for (char c : plaintext) {
+		if (!isalpha(c)) ciphertext.insert(ciphertext.begin() + i, c);
+		++i;
+	}
 
 	io.writeOutput(plaintext, ciphertext, "Playfair cipher", option, key);
 	return ciphertext;

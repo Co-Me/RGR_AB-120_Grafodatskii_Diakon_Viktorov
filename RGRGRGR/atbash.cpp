@@ -19,7 +19,7 @@ string Atbash::encode_atbash(string src) {
         if (isalpha(src[i])) {
             for (int j = 0; ; ++j) {
                 if (CODE_ATBASH[j] == toupper(src[i])) {
-                    src[i] = (toupper(src[i])) ? DECODE_ATBASH[j] : tolower(DECODE_ATBASH[j]);
+                    src[i] = (toupper(src[i]) == src[i]) ? DECODE_ATBASH[j] : tolower(DECODE_ATBASH[j]);
                     break;
                 }
             }
@@ -37,7 +37,7 @@ string Atbash::decode_atbash(string src) {
         if (isalpha(src[i])) {
             for (int j = 0; ; ++j) {
                 if (DECODE_ATBASH[j] == toupper(src[i])) {
-                    src[i] = (toupper(src[i])) ? CODE_ATBASH[j] : tolower(CODE_ATBASH[j]);
+                    src[i] = (toupper(src[i]) == src[i]) ? CODE_ATBASH[j] : tolower(CODE_ATBASH[j]);
                     break;
                 }
             }

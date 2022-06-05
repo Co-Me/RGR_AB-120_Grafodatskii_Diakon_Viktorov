@@ -17,7 +17,8 @@ string Cezar::cezar(string str) {
     lenth = str.size();
 
     for (int i = 0; i < lenth; i++) {
-        if (str[i] >= 'X') {
+        if (!isalpha(str[i])) continue;
+        if (tolower(str[i]) >= 'x') {
             str[i] = str[i] - 26;
             str[i] += 3;
         }
@@ -44,8 +45,8 @@ string Cezar::decezar(string str) {
     lenth = str.size();
 
     for (int i = 0; i < lenth; i++) {
-
-        if ((str[i] <= 'C') && (str[i] != 32)) {
+        if (!isalpha(str[i])) continue;
+        if ((tolower(str[i]) <= 'c') && (str[i] != 32)) {
             str[i] = str[i] + 26;
             str[i] -= 3;
         }
