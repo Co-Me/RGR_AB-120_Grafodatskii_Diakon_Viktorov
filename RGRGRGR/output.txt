@@ -1,6 +1,6 @@
-Viginer
-Ciphertext: FDHDHTETHHFDHGHYRNFNG
-Key: zhopa
-Plaintext: GEIEIUFUIIGEIHIZSOGOH
+Atbash
+Ciphertext: fdsdgsgsfsfdhdfshsdhfdshrgrgerREGREGRGREGREGRErreher,g,wgwe,wgwe,
+Key: No key
+Plaintext: uwhwththuhuwswuhshwsuwhsititviIVTIVTITIVTIVTIViivsvi,t,dtdv,dtdv,
 
 

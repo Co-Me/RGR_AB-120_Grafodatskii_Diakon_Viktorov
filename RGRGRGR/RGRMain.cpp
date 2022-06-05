@@ -2,7 +2,8 @@
 */
 
 
-#include <iostream>;
+#include <iostream>
+#include <fstream>
 #include <Windows.h>
 #include "inpout.h"
 #include "playfair.h"
@@ -22,8 +23,9 @@ void writeMenu() {
 	cout << "3) Skital *(core diameter as a key)" << endl;
 	cout << "4) Cezar" << endl;
 	cout << "5) Viginer" << endl;
-	cout << "6) Atabash" << endl;
+	cout << "6) Atbash" << endl;
 	cout << "7) Generate inputs for all ciphers" << endl;
+	
 	cout << endl;
 }
 
@@ -44,10 +46,13 @@ void menu() {
 			writeMenu();
 			cin >> choice;
 			if (choice.size() > 1) throw string("Incorrect choice");
-			int option;
+			int option, inpoption;
 			string text;
 			string key = "";
 			string result;
+			string filename = " ";
+			pair<string, string> finp;
+
 			switch (choice[0]) {
 			case '0':
 				cout << "Good Bye!";
@@ -56,100 +61,140 @@ void menu() {
 
 			case '1':
 				option = io.readOption("Option");
-				if (io.readOption("Gen") == 1) {
+				inpoption = io.readOption("Inp");
+				if (inpoption == 1) {
 					text = io.readInput();
 					key = io.readKey();
 				}
-				else {
+				else if (inpoption == 2) {
 					text = io.generateInput(30);
 					key = io.generateInput(6, "Gronsfeld");
+				}
+				else {
+					cout << "Last line will be used as a key" << endl;
+					system("notepad input.txt");
+					finp = io.readFile("input.txt", 1);
+					text = finp.first;
+					key = finp.second;
 				}
 				if (!io.checkText(text)) throw string ("Incorrect text");
 				if (!io.checkText(key, "Gronsfeld")) throw string("Incorrect key");
 				if (!io.pass()) throw string("Inncorect password");
-				text = io.textParse(text);
 				gf.gronsfeldCipher(option, text, key);
 				break;
 
 			case '2':
 				option = io.readOption("Option");
-				if (io.readOption("Gen") == 1) {
+				inpoption = io.readOption("Inp");
+				if (inpoption == 1) {
 					text = io.readInput();
 					key = io.readKey();
 				}
-				else {
+				else if (inpoption == 2) {
 					text = io.generateInput(30);
 					key = io.generateInput(6);
+				}
+				else {
+					cout << "Last line will be used as a key" << endl;
+					system("notepad input.txt");
+					finp = io.readFile("input.txt", 1);
+					text = finp.first;
+					key = finp.second;
 				}
 				if (!io.checkText(text)) throw string ("Incorrect text");
 				if (!io.checkText(key)) throw string ("Incorrect key");
 				if (!io.pass()) throw string("Inncorect password");
-				text = io.textParse(text);
 				pf.playfairCipher(option, text, key);
 				break;
 
 			case '3':
 				option = io.readOption("Option");
-				if (io.readOption("Gen") == 1) {
+				inpoption = io.readOption("Inp");
+				if (inpoption == 1) {
 					text = io.readInput();
 					key = io.readKey();
 				}
-				else {
+				else if (inpoption == 2) {
 					text = io.generateInput(30);
 					key = io.generateInput(1, "Skital");
+				}
+				else {
+					cout << "Last line will be used as a key" << endl;
+					system("notepad input.txt");
+					finp = io.readFile("input.txt", 1);
+					text = finp.first;
+					key = finp.second;
 				}
 				if (!io.checkText(text)) throw string("Incorrect text");
 				if (!io.checkText(key, "Skital")) throw string("Incorrect key");
 				if (!io.pass()) throw string("Inncorect password");
-				text = io.textParse(text);
 				sk.skital(option, text, key);
 				break;
 
 			case '4':
 				option = io.readOption("Option");
-				if (io.readOption("Gen") == 1) {
+				inpoption = io.readOption("Inp");
+				if (inpoption == 1) {
 					text = io.readInput();
 				}
-				else {
+				else if (inpoption == 2) {
 					text = io.generateInput(30);
+				}
+				else {
+					system("notepad input.txt");
+					finp = io.readFile("input.txt", 1);
+					text = finp.first;
+					key = finp.second;
 				}
 				if (!io.checkText(text)) throw string("Incorrect text");
 				if (!io.pass()) throw string("Inncorect password");
-				text = io.textParse(text);
 				if (option == 1) cz.cezar(text);
 				else if (option == 2) cz.decezar(text);
 				break;
 
 			case '5':
 				option = io.readOption("Option");
-				if (io.readOption("Gen") == 1) {
+				inpoption = io.readOption("Inp");
+				if (inpoption == 1) {
 					text = io.readInput();
 					key = io.readKey();
 				}
-				else {
+				else if (inpoption == 2) {
 					text = io.generateInput(30);
 					key = io.generateInput(6);
+				}
+				else {
+					cout << "Last line will be used as a key" << endl;
+					system("notepad input.txt");
+					finp = io.readFile("input.txt", 1);
+					text = finp.first;
+					key = finp.second;
 				}
 				if (!io.checkText(text)) throw string("Incorrect text");
 				if (!io.checkText(key)) throw string("Incorrect key");
 				if (!io.pass()) throw string("Inncorect password");
-				text = io.textParse(text);
 				if (option == 1) vg.viginer(text, key);
 				else if (option == 2) vg.deviginer(text, key);
 				break;
 
 			case '6':
 				option = io.readOption("Option");
+				inpoption = io.readOption("Inp");
 
-				if (io.readOption("Gen") == 1) {
+				if (inpoption == 1) {
 					text = io.readInput();
 				}
-				else {
+				else if (inpoption == 2) {
 					text = io.generateInput(30);
+				}
+				else {
+					system("notepad input.txt");
+					finp = io.readFile("input.txt", 1);
+					text = finp.first;
+					key = finp.second;
 				}
 				if (!io.checkText(key)) throw string("Incorrect key");
 				if (!io.pass()) throw string("Inncorect password");
-				text = io.textParse(text);
 				if (option == 1) ab.encode_atbash(text);
 				else if (option == 2) ab.decode_atbash(text);
 				break;
@@ -198,5 +243,6 @@ void menu() {
 }
 
 int main() {
+	srand(time(NULL));
 	menu();
 }

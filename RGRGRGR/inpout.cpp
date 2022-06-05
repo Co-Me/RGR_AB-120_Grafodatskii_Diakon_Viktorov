@@ -3,7 +3,7 @@
 #include <string>
 #include <random>
 #include <Windows.h>
-#include <lmcons.h>
+#include <algorithm>
 #include "inpout.h"
 
 using namespace std;
@@ -49,24 +49,27 @@ int Inpout::readOption(string type) {
 
 	if (type == "Option") {
 		cout << "1) Encode" << endl << "2) Decode" << endl;
+		cin >> option;
+		if (option == "1" || option == "2")  return stoi(option);
 	}
-	else if (type == "Gen") {
-		cout << "1) Type input via console" << endl << "2) Generate input randomly" << endl;
+	else if (type == "Inp") {
+		cout << "1) Type input via console" << endl << "2) Generate input randomly" << endl << "3) Read from the file" << endl;
+		cin >> option;
+		if (option == "1" || option == "2" || option == "3")  return stoi(option);
 	}
-	cin >> option;
 
-	while (option != "1" && option != "2") {
+	while (true) {
 		if (type == "Option") {
 			cout << endl << "Incorrect choice" << endl << endl << "1) Encode" << endl << "2) Decode" << endl;
+			cin >> option;
+			if (option == "1" || option == "2") return stoi(option);
 		}
-		else if (type == "Gen") {
-			cout << endl << "Incorrect choice" << endl << endl << "1) Type input via console" << endl << "2) Generate input randomly" << endl;
+		else if (type == "Inp") {
+			cout << endl << "Incorrect choice" << endl << endl << "1) Type input via console" << endl << "2) Generate input randomly" << endl << "3) Read from the file" << endl;
+			cin >> option;
+			if (option == "1" || option == "2" || option == "3")  return stoi(option);
 		}
-		cout << endl;
-		cin >> option;
 	}
-
-	return int(option[0] - '0');
 }
 
 void Inpout::clear() {
@@ -83,6 +86,8 @@ string Inpout::readKey() {
 }
 
 bool Inpout::checkText(string text, string option) {
+	string alp = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!?,.;:(){}<>'\"/0123456789 ";
+	if (text.size() == 0) return false;
 	if (option == "Gronsfeld" || option == "Skital") {
 		for (char i : text) {
 			if (!(i >= '0' && i <= '9')) {
@@ -91,18 +96,12 @@ bool Inpout::checkText(string text, string option) {
 		}
 		return true;
 	}
-
-	for (char i : text) {
-		if (i != ' ' && !(i >= 'a' && i <= 'z') && !(i >= 'A' && i <= 'Z')) {
-			return false;
-		}
-	}
-	return true;
+	if (all_of(text.begin(), text.end(), [alp](char a) {return alp.find(a) != SIZE_MAX; })) return true;
+	else return false;
 }
 
 string Inpout::generateInput(int len, string name) {
-	srand(time(NULL));
-	string alp = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	string signs = "!?,.;:(){}<>'\"0123456789 ";
 	string text = "";
 
 	if (name == "Gronsfeld" || name == "Skital") {
@@ -113,8 +112,14 @@ string Inpout::generateInput(int len, string name) {
 		return text;
 	}
 
+	string word;
 	while (text.size() <= len) {
-		text += textParse(dict[rand() % dict.size()]) + ' ';
+		word = dict[rand() % dict.size()];
+		for (char& c : word) {
+			if (rand() % 2 == 0) c = toupper(c);
+		}
+		text += word + signs[rand() % signs.size()];
+		if (*(text.end() - 1) != ' ') text += ' ';
 	}
 	return text;
 }
@@ -136,4 +141,26 @@ bool Inpout::pass() {
 	cin >> password;
 	if (password == correct) return true;
 	return false;
+}
+
+pair<string, string> Inpout::readFile(string name, bool key) {
+	string text = "";
+	string line;
+	pair <string, string> inp("", "");
+
+	ifstream f(name);
+	if (f.eof()) {
+		return inp;
+	}
+	while (true) {
+		f >> line;
+		if (f.eof()) {
+			if (key) inp.second = line;
+			else text += line;
+			break;
+		}
+		text += line;
+	}
+	inp.first = text;
+	return inp;
 }

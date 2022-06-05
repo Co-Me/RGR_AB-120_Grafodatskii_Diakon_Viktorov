@@ -19,6 +19,7 @@ namespace N
         int readOption(string);
         bool checkText(string, string option = "");
         string textParse(string);
+        pair<string, string> readFile(string, bool);
         bool pass();
 
         vector<string> dict = { "area",
