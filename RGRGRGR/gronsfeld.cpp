@@ -46,7 +46,7 @@ char Grons::letterTransform(char letter, int move, int option) {
 	}
 }
 
-void Grons::gronsfeldCipher(int option, string plaintext, string key) {
+string Grons::gronsfeldCipher(int option, string plaintext, string key) {
 	Inpout io;
 
 	string ciphertext = "";
@@ -60,6 +60,7 @@ void Grons::gronsfeldCipher(int option, string plaintext, string key) {
 		++keyIndex;
 	}
 
-	io.writeOutput(plaintext, ciphertext, "Gronsfeld cipher");
+	io.writeOutput(plaintext, ciphertext, "Gronsfeld cipher", option, key);
+	return ciphertext;
 
 }

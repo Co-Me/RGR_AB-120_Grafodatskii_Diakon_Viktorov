@@ -181,7 +181,7 @@ pair<char, char> Playf::bigramTransform(pair<char, char> bigram, vector<string> 
 }
 
 
-void Playf::playfairCipher(int option, string plaintext, string key) {
+string Playf::playfairCipher(int option, string plaintext, string key) {
 	Inpout io;
 
 	vector<string> sheet; // Таблица для кодировки
@@ -204,6 +204,7 @@ void Playf::playfairCipher(int option, string plaintext, string key) {
 
 	}
 
-	io.writeOutput(plaintext, ciphertext, "Playfair cipher");
+	io.writeOutput(plaintext, ciphertext, "Playfair cipher", option, key);
+	return ciphertext;
 
 }

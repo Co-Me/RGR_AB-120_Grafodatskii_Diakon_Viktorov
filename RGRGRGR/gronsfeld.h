@@ -10,7 +10,7 @@ namespace N
     public:
         bool isLetter(char);
         char letterTransform(char, int, int);
-        void gronsfeldCipher(int, string, string);
+        string gronsfeldCipher(int, string, string);
     };
 
 }

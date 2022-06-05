@@ -15,7 +15,7 @@ namespace N
         pair<pair<int, int>, pair<int, int>> findPositions(pair<char, char>, vector<string>);
         int chooseRule(pair<pair<int, int>, pair<int, int>>);
         pair<char, char> bigramTransform(pair<char, char>, vector<string>, pair<pair<int, int>, pair<int, int>>, int);
-        void playfairCipher(int, string, string);
+        string playfairCipher(int, string, string);
     };
 
 }

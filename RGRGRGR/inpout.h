@@ -9,12 +9,16 @@ namespace N
     {
 
     public:
+        string correct = "1111";
         string readInput();
         void clear();
-        void generateInput();
-        void writeOutput(string, string, string);
+        string generateInput(int, string name = "");
+        void writeOutput(string, string, string, int, string);
         string readKey();
-        int readOption();
+        int readOption(string);
+        bool checkText(string, string option = "");
+        string textParse(string);
+        bool pass();
     };
 
 }
