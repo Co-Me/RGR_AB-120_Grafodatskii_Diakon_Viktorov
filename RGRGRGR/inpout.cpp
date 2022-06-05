@@ -12,6 +12,7 @@ using namespace N;
 #define ENCODE 1
 #define DECODE 2
 
+
 string Inpout::readInput() {
 	string line;
 	cout << "Write the text: " << endl;
@@ -40,7 +41,7 @@ void Inpout::writeOutput(string starttext, string endtext, string name, int opti
 	}
 
 	output.close();
-	cout << "Output file has been updated" << endl << endl;
+	cout << endl << "Output file has been updated" << endl << endl;
 }
 
 int Inpout::readOption(string type) {
@@ -111,9 +112,9 @@ string Inpout::generateInput(int len, string name) {
 		}
 		return text;
 	}
-	for (int i = 0; i < len; i++) {
-		text += alp[rand() % alp.size()];
-		if (rand() % 101 > 90) text += ' ';
+
+	while (text.size() <= len) {
+		text += textParse(dict[rand() % dict.size()]) + ' ';
 	}
 	return text;
 }
