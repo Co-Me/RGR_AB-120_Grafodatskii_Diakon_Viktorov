@@ -15,7 +15,7 @@ using namespace N;
 #define ENCODE 1
 #define DECODE 2
 
-bool Grons::isLetter(char letter) {
+bool Grons::isLetter(char letter) { // Является ли символ буквой
 	if ((letter >= 'a' && letter <= 'z') || (letter >= 'A' && letter <= 'Z')) {
 		return true;
 	}
@@ -25,7 +25,7 @@ bool Grons::isLetter(char letter) {
 	}
 }
 
-char Grons::letterTransform(char letter, int move, int option) {
+char Grons::letterTransform(char letter, int move, int option) { // Преобразоваие символа
 	if (!Grons::isLetter(letter)) {
 		return letter;
 	}

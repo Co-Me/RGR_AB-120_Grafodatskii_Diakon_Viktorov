@@ -87,6 +87,7 @@ void menu() {
 				text = io.textParse(text);
 				pf.playfairCipher(option, text, key);
 				break;
+
 			case '3':
 				option = io.readOption("Option");
 				if (io.readOption("Gen") == 1) {
@@ -103,6 +104,7 @@ void menu() {
 				text = io.textParse(text);
 				sk.skital(option, text, key);
 				break;
+
 			case '4':
 				option = io.readOption("Option");
 				if (io.readOption("Gen") == 1) {
@@ -117,6 +119,7 @@ void menu() {
 				if (option == 1) cz.cezar(text);
 				else if (option == 2) cz.decezar(text);
 				break;
+
 			case '5':
 				option = io.readOption("Option");
 				if (io.readOption("Gen") == 1) {
@@ -134,6 +137,7 @@ void menu() {
 				if (option == 1) vg.viginer(text, key);
 				else if (option == 2) vg.deviginer(text, key);
 				break;
+
 			case '6':
 				option = io.readOption("Option");
 
@@ -149,6 +153,7 @@ void menu() {
 				if (option == 1) ab.encode_atbash(text);
 				else if (option == 2) ab.decode_atbash(text);
 				break;
+
 			case '7':
 				if (!io.pass()) throw string("Inncorect password");
 				text = io.generateInput(30);
