@@ -11,7 +11,6 @@ namespace N
     public:
         string cezar(string);
         string decezar(string);
-        string textParse(string);
     };
 
 }

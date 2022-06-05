@@ -9,7 +9,6 @@ namespace N
 
     public:
         string skital(int, string, string);
-        string textParse(string);
     };
 
 }

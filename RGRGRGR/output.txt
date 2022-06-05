@@ -1,12 +1,6 @@
-Gronsfeld cipher
-Plaintext: FHDJYDNF
-Key: 123
-Ciphertext: GJGKAGOH
-
-
-Gronsfeld cipher
-Plaintext: MOLLY HAD A LITTLE MOUSE
-Key: 12345
-Ciphertext: NQOPD ICG E QJVWPJ NQXWJ
+Viginer
+Ciphertext: FDHDHTETHHFDHGHYRNFNG
+Key: zhopa
+Plaintext: GEIEIUFUIIGEIHIZSOGOH
 
 

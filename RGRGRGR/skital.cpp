@@ -14,21 +14,10 @@ using namespace N;
 #define ENCODE 1
 #define DECODE 2
 
-string Skital::textParse(string text) {
-	string parsedText = "";
-
-	for (char i : text) {
-		i = toupper(i);
-		parsedText.push_back(i);
-	}
-
-	return parsedText;
-}
-
 string Skital::skital(int option, string text, string keystr) {
 	int key = stoi(keystr);;
 
-	int len = text.size() / key + bool(text.size() % key);
+	int len = text.size() / key + bool(text.size() % key); // Определение длины стрежня
 	vector<vector<char>> core(key, vector<char>(len, ' '));
 	string result = "";
 

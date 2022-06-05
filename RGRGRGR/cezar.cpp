@@ -9,19 +9,8 @@
 using namespace std;
 using namespace N;
 
-string Cezar::textParse(string text) {
-    string parsedText = "";
-
-    for (char i : text) {
-        i = toupper(i);
-        parsedText.push_back(i);
-    }
-
-    return parsedText;
-}
-
 string Cezar::cezar(string str) {
-    str = textParse(str);
+
     string plaintext = str;
     int lenth;
 
@@ -48,7 +37,7 @@ string Cezar::cezar(string str) {
 }
 
 string Cezar::decezar(string str) {
-    str = textParse(str);
+
     string ciphertext = str;
     int lenth;
 
