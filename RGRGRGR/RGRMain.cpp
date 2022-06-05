@@ -1,3 +1,7 @@
+/*Файл с выводом создается в дикертории проекта
+*/
+
+
 #include <iostream>;
 #include <Windows.h>
 #include "inpout.h"
