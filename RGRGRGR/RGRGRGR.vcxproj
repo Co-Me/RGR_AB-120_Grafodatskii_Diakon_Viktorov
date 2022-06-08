@@ -140,25 +140,29 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="atbash.cpp" />
-    <ClCompile Include="cezar.cpp" />
+    <ClCompile Include="caesar.cpp" />
     <ClCompile Include="inpout.cpp" />
+    <ClCompile Include="menu.cpp" />
     <ClCompile Include="RGRMain.cpp" />
     <ClCompile Include="playfair.cpp" />
     <ClCompile Include="gronsfeld.cpp" />
-    <ClCompile Include="skital.cpp" />
-    <ClCompile Include="viginer.cpp" />
+    <ClCompile Include="scytale.cpp" />
+    <ClCompile Include="viginere.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="atbash.h" />
-    <ClInclude Include="cezar.h" />
+    <ClInclude Include="caesar.h" />
     <ClInclude Include="gronsfeld.h" />
     <ClInclude Include="inpout.h" />
+    <ClInclude Include="menu.h" />
     <ClInclude Include="playfair.h" />
-    <ClInclude Include="skital.h" />
-    <ClInclude Include="viginer.h" />
+    <ClInclude Include="scytale.h" />
+    <ClInclude Include="viginere.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
+    <Text Include="keys.txt" />
+    <Text Include="output.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

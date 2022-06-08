@@ -27,16 +27,19 @@
     <ClCompile Include="inpout.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cezar.cpp">
+    <ClCompile Include="caesar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="viginer.cpp">
+    <ClCompile Include="viginere.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="atbash.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="skital.cpp">
+    <ClCompile Include="scytale.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,21 +53,30 @@
     <ClInclude Include="inpout.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cezar.h">
+    <ClInclude Include="caesar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="viginer.h">
+    <ClInclude Include="viginere.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="atbash.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="skital.h">
+    <ClInclude Include="scytale.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="keys.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="output.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

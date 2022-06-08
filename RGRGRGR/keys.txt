@@ -1,0 +1,12 @@
+1) Gronsfeld cipher: 765506
+2) Gronsfeld cipher: 765506
+3) Playfair cipher: FaMily5 
+4) Playfair cipher: FaMily5 
+5) Scytale: 6
+6) Scytale: 6
+7) Caesar: No key
+8) Caesar: No key
+9) Viginere: wORk9 Week! 
+10) Viginere: wORk9 Week! 
+11) Atbash: No key
+12) Atbash: No key

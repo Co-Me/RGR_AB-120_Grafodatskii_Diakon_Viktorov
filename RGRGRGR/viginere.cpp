@@ -4,7 +4,7 @@
 */
 #include <iostream>
 #include <string>
-#include "viginer.h"
+#include "viginere.h"
 #include "inpout.h"
 
 using namespace std;
@@ -13,7 +13,7 @@ using namespace N;
 string alpbig = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 string alpsmall = "abcdefghijklmnopqrstuvwxyz";
 
-string Viginer::phraseGen(string text, string key) {
+string Viginere::phraseGen(string text, string key) {
     string phrase = "";
     int n = 0;
 
@@ -25,7 +25,7 @@ string Viginer::phraseGen(string text, string key) {
     return phrase;
 }
 
-string Viginer::viginer(string text, string key) {
+string Viginere::encode_viginere(string text, string key) {
     string result = "";
     int i = 0;
     string alp;
@@ -47,11 +47,11 @@ string Viginer::viginer(string text, string key) {
         result += alp[(alp.find(text[i]) + alp.find(phrase[i])) % alp.size()];
     }
     Inpout io;
-    io.writeOutput(text, result, "Viginer", 1, key);
+    io.writeOutput(text, result, "Viginere", 1, key);
     return result;
 }
 
-string Viginer::deviginer(string text, string key) {
+string Viginere::decode_viginere(string text, string key) {
     string result = "";
     int i = 0;
     string alp;
@@ -74,6 +74,11 @@ string Viginer::deviginer(string text, string key) {
     }
 
      Inpout io;
-     io.writeOutput(text, result, "Viginer", 2, key);
+     io.writeOutput(text, result, "Viginere", 2, key);
      return result;
+}
+
+string Viginere::viginere(int option, string text, string key) {
+    if (option == 1) return encode_viginere(text, key);
+    else if (option == 2) return decode_viginere(text, key);
 }

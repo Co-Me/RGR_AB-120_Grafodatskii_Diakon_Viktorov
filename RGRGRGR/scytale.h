@@ -4,11 +4,11 @@
 using namespace std;
 namespace N
 {
-    class Skital
+    class Scytale
     {
 
     public:
-        string skital(int, string, string);
+        string scytale(int, string, string);
     };
 
 }

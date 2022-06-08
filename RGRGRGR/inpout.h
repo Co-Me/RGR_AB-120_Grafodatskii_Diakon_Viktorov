@@ -10,18 +10,19 @@ namespace N
     {
 
     public:
-        string correct = "1111";
-        string readInput();
+        string readText();
         void clear();
         string generateInput(int, string name = "");
         void writeOutput(string, string, string, int, string);
         string readKey();
-        int readOption(string);
         bool checkText(string, string option = "");
-        string textParse(string);
-        pair<string, string> readFile(string, bool);
+        pair<string, string> readFile(bool);
         bool pass();
+        int countLines();
 
+        void print();
+
+    private:
         vector<string> dict = { "area",
                                 "book",
                                 "business",
@@ -72,6 +73,8 @@ namespace N
                                 "work",
                                 "world",
                                 "year" };
+        string correct = "1111";
     };
+
 
 }

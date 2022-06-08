@@ -3,13 +3,13 @@
 
 #include <iostream>
 #include <string>
-#include "cezar.h"
+#include "caesar.h"
 #include "inpout.h"
 
 using namespace std;
 using namespace N;
 
-string Cezar::cezar(string str) {
+string Caesar::encode_caesar(string str) {
 
     string plaintext = str;
     int lenth;
@@ -33,11 +33,11 @@ string Cezar::cezar(string str) {
         }
     }
     Inpout io;
-    io.writeOutput(plaintext, str, "Cezar", 1, "No key");
+    io.writeOutput(plaintext, str, "Caesar", 1, "No key");
     return str;
 }
 
-string Cezar::decezar(string str) {
+string Caesar::decode_caesar(string str) {
 
     string ciphertext = str;
     int lenth;
@@ -61,6 +61,11 @@ string Cezar::decezar(string str) {
         }
     }
     Inpout io;
-    io.writeOutput(ciphertext, str, "Cezar", 2, "No key");
+    io.writeOutput(ciphertext, str, "Caesar", 2, "No key");
     return str;
+}
+
+string Caesar::caesar(int option, string text) {
+    if (option == 1) return encode_caesar(text);
+    else if (option == 2) return decode_caesar(text);
 }
