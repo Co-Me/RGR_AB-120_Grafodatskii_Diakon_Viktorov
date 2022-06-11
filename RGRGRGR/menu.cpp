@@ -78,7 +78,7 @@ Menu::Command Menu::identifyCommand(string command) {
 }
 
 void Menu::main() {
-	help();
+	cout << "Welcome! You can use HELP to see the list of commands." << endl;
 
 	while (true) {
 		string line;
