@@ -40,12 +40,12 @@ void Inpout::writeOutput(string starttext, string endtext, string name, int opti
 	output << n << ") " << name << endl;
 
 	if (option == ENCODE) {
-		output << "Plaintext: " << starttext << endl;
-		output << "Ciphertext: " << endtext << endl << endl;
+		output << "Plaintext:\n" << starttext << endl << endl;;
+		output << "Ciphertext:\n" << endtext << endl << endl;
 	}
 	if (option == DECODE) {
-		output << "Ciphertext: " << starttext << endl;
-		output << "Plaintext: " << endtext << endl << endl;
+		output << "Ciphertext:\n" << starttext << endl << endl;
+		output << "Plaintext:\n" << endtext << endl << endl;
 	}
 
 	output.close();
@@ -77,7 +77,7 @@ string Inpout::readKey() {
 }
 
 bool Inpout::checkText(string text, string option) {
-	string alp = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!?,.;:(){}<>'\"\n/0123456789 ";
+	string alp = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!?,.;:(){}<>'\"\n/0123456789@#¹$%^&*-_=+ ";
 	if (text.size() == 0) return false;
 	if (option == "Gronsfeld" || option == "Scytale") {
 		for (char i : text) {
@@ -93,7 +93,7 @@ bool Inpout::checkText(string text, string option) {
 }
 
 string Inpout::generateInput(int len, string name) {
-	string signs = "!?,.;:(){}<>'\"0123456789 ";
+	string signs = "!?,.;:(){}<>'\"/0123456789@#¹$%^&*-_=+ ";
 	string text = "";
 
 	if (name == "Gronsfeld" || name == "Scytale") {
@@ -139,7 +139,7 @@ pair<string, string> Inpout::readFile(bool key) {
 		return inp;
 	}
 	while (true) {
-		f >> line;
+		getline(f, line);
 		if (f.eof()) {
 			if (key) inp.second = line;
 			else text += line;

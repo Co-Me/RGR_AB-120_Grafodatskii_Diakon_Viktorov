@@ -163,6 +163,7 @@
     <Text Include="input.txt" />
     <Text Include="keys.txt" />
     <Text Include="output.txt" />
+    <Text Include="readme.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

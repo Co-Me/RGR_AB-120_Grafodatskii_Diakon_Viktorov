@@ -1,48 +1,18 @@
-1) Gronsfeld cipher
-Plaintext: mONtH7 cOuNtry2 MonEy. DAy{ Place3 
-Ciphertext: tUSyH7 cOuNtry2 MonEy. DAy{ Place3 
+1) Playfair cipher
+Ciphertext:
+qwerty
 
-2) Gronsfeld cipher
-Ciphertext: tUSyH7 cOuNtry2 MonEy. DAy{ Place3 
-Plaintext: mONtH7 cOuNtry2 MonEy. DAy{ Place3 
 
-3) Playfair cipher
-Plaintext: mONtH7 cOuNtry2 MonEy. DAy{ Place3 
-Ciphertext: LKOSK7 BGZOSPC2 LKODB. EFB{ TFMBD3 Z
+Plaintext:
+OYZLUX
 
-4) Playfair cipher
-Ciphertext: LKOSK7 BGZOSPC2 LKODB. EFB{ TFMBD3 Z
-Plaintext: MONTH7 COUNTRY2 MONEY. DAY{ PLACE3 X
 
-5) Scytale
-Plaintext: mONtH7 cOuNtry2 MonEy. DAy{ Place3 
-Ciphertext: m rnAaOcyEycNO2y{etu . 3HNM P 7toDl 
+2) Playfair cipher
+Ciphertext:
+qwE, rty
 
-6) Scytale
-Ciphertext: m rnAaOcyEycNO2y{etu . 3HNM P 7toDl 
-Plaintext: mONtH7 cOuNtry2 MonEy. DAy{ Place3  
 
-7) Caesar
-Plaintext: mONtH7 cOuNtry2 MonEy. DAy{ Place3 
-Ciphertext: pRQwK7 fRxQwub2 PrqHb. GDb{ Sodfh3 
+Plaintext:
+OYZ, LUX
 
-8) Caesar
-Ciphertext: pRQwK7 fRxQwub2 PrqHb. GDb{ Sodfh3 
-Plaintext: mONtH7 cOuNtry2 MonEy. DAy{ Place3 
-
-9) Viginere
-Plaintext: mONtH7 cOuNtry2 MonEy. DAy{ Place3 
-Ciphertext: iCEdD7 mKiEdnc2 IceOu. NWm{ Lpema3 
-
-10) Viginere
-Ciphertext: iCEdD7 mKiEdnc2 IceOu. NWm{ Lpema3 
-Plaintext: mONtH7 cOuNtry2 MonEy. DAy{ Place3 
-
-11) Atbash
-Plaintext: mONtH7 cOuNtry2 MonEy. DAy{ Place3 
-Ciphertext: nLMgS7 xLfMgib2 NlmVb. WZb{ Kozxv3 
-
-12) Atbash
-Ciphertext: nLMgS7 xLfMgib2 NlmVb. WZb{ Kozxv3 
-Plaintext: mONtH7 cOuNtry2 MonEy. DAy{ Place3 
 

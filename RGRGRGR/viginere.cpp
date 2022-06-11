@@ -17,9 +17,12 @@ string Viginere::phraseGen(string text, string key) {
     string phrase = "";
     int n = 0;
 
-    while (phrase.size() < text.size()) {
-        if (isalpha(key[n % key.size()])) phrase += key[n % key.size()];
-        ++n;
+    for (char c : text) {
+        if (isalpha(c)) {
+            while (!isalpha(key[n % key.size()])) n++;
+            phrase += key[n++ % key.size()];
+        }
+        else phrase += ' ';
     }
 
     return phrase;

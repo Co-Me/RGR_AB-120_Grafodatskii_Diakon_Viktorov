@@ -85,7 +85,8 @@ void Menu::main() {
 		Command command;
 		cout << endl << "Main> ";
 		getline(cin, line);
-
+		
+		if (all_of(line.begin(), line.end(), [](char c) {return (c == ' ');})) continue;
 		command = identifyCommand(line);
 
 		switch (command) {
@@ -157,6 +158,7 @@ void Menu::cipher(Command cipher, string cipherName) {
 		cout << endl << "Main\\" << cipherName << ">";
 		getline(cin, line);
 
+		if (all_of(line.begin(), line.end(), [](char c) {return (c == ' '); })) continue;
 		command = identifyCommand(line);
 
 		switch (command) {
@@ -210,6 +212,7 @@ void Menu::inp(Command cipher, Command inpMode, string cipherName, string modeNa
 		cout << endl << "Main\\" << cipherName << "\\" << modeName << ">";
 		getline(cin, line);
 
+		if (all_of(line.begin(), line.end(), [](char c) {return (c == ' '); })) continue;
 		command = identifyCommand(line);
 		try {
 			switch (command) {

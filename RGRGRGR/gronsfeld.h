@@ -8,7 +8,6 @@ namespace N
     {
 
     public:
-        bool isLetter(char);
         char letterTransform(char, int, int);
         string gronsfeldCipher(int, string, string);
     };
