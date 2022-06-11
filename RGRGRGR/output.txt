@@ -1,6 +1,18 @@
-Atbash
-Ciphertext: fdsdgsgsfsfdhdfshsdhfdshrgrgerREGREGRGREGREGRErreher,g,wgwe,wgwe,
-Key: No key
-Plaintext: uwhwththuhuwswuhshwsuwhsititviIVTIVTITIVTIVTIViivsvi,t,dtdv,dtdv,
+1) Playfair cipher
+Ciphertext:
+qwerty
+
+
+Plaintext:
+OYZLUX
+
+
+2) Playfair cipher
+Ciphertext:
+qwE, rty
+
+
+Plaintext:
+OYZ, LUX
 
 

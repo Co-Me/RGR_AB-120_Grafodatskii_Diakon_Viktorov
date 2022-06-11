@@ -10,6 +10,7 @@ namespace N
     public:
         string encode_atbash(string);
         string decode_atbash(string);
+        string atbash(int, string);
     };
 
 }

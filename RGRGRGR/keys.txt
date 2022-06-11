@@ -1,0 +1,2 @@
+1) Playfair cipher: nsTU, NETI
+2) Playfair cipher: nsTU, NETI

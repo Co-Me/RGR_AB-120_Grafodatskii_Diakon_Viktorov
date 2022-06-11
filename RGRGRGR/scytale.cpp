@@ -5,7 +5,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "skital.h"
+#include "scytale.h"
 #include "inpout.h"
 
 using namespace std;
@@ -14,7 +14,7 @@ using namespace N;
 #define ENCODE 1
 #define DECODE 2
 
-string Skital::skital(int option, string text, string keystr) {
+string Scytale::scytale(int option, string text, string keystr) {
 	int key = stoi(keystr);;
 
 	int len = text.size() / key + bool(text.size() % key); // Определение длины стрежня
@@ -54,6 +54,6 @@ string Skital::skital(int option, string text, string keystr) {
 		}
 	}
 	Inpout io;
-	io.writeOutput(text, result, "Skital", option, keystr);
+	io.writeOutput(text, result, "Scytale", option, keystr);
 	return result;
 }

@@ -47,3 +47,8 @@ string Atbash::decode_atbash(string src) {
     io.writeOutput(startstring, src, "Atbash", 2, "No key");
     return src;
 }
+
+string Atbash::atbash(int option, string text) {
+    if (option == 1) return encode_atbash(text);
+    else if (option == 2) return decode_atbash(text);
+}
